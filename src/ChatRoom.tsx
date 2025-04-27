@@ -6,7 +6,7 @@ const ChatRoom = () => {
 
 
     useEffect(() => {
-        const ws = new WebSocket("ws://localhost:8080");
+        const ws = new WebSocket(`${import.meta.env.VITE_WSURL}`);
 
         ws.onmessage = (event) => {
             setMessages(s => [...s , {text : event.data , fromMe : false}]);
