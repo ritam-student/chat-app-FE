@@ -9,7 +9,7 @@ const ChatRoom = () => {
         const ws = new WebSocket(`${import.meta.env.VITE_WSURL}`);
 
         ws.onmessage = (event) => {
-            setMessages(s => [...s , {text : event.data , fromMe : false}]);
+            setMessages(s => [...s , {text : JSON.parse(event.data) , fromMe : false}]);
         }
         wsRef.current = ws;
 
